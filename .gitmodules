@@ -1,0 +1,3 @@
+[submodule "treafik"]
+	path = treafik
+	url = https://github.com/mahdikiani/TraefikLaunchpad

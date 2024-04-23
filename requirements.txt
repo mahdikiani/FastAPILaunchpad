@@ -1,0 +1,7 @@
+uvicorn
+fastapi
+pydantic
+
+singleton_package
+python-dotenv
+#debugpy
