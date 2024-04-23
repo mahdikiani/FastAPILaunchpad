@@ -1,6 +1,6 @@
 services:  
   app:
-    build: ./app
+    build: .
     restart: always
     networks:
       - traefik-net
