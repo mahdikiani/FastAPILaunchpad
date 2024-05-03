@@ -9,9 +9,6 @@ from core import exceptions
 
 from . import config, db
 
-with open("README.md", "r") as f:
-    DESCRIPTION = f.read()
-
 
 @asynccontextmanager
 async def lifespan(app: fastapi.FastAPI):  # type: ignore
@@ -26,7 +23,7 @@ async def lifespan(app: fastapi.FastAPI):  # type: ignore
 
 app = fastapi.FastAPI(
     title="FastAPI Launchpad",
-    description=DESCRIPTION,
+    # description=DESCRIPTION,
     version="0.1.0",
     contact={
         "name": "Mahdi Kiani",
@@ -63,7 +60,6 @@ app.add_middleware(
 )
 
 
-@app.get('/')
+@app.get("/")
 async def index():
-    return {"message":"Hello World!"}
-    
+    return {"message": "Hello World!"}
