@@ -7,7 +7,7 @@ from pathlib import Path
 
 import dotenv
 from pydantic import BaseModel
-from singleton_package import Singleton
+from singleton import Singleton
 
 dotenv.load_dotenv()
 base_dir = Path(__file__).resolve().parent.parent
