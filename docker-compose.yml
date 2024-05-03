@@ -1,7 +1,9 @@
 services:  
   app:
     build: web
-    restart: always
+    restart: unless-stopped
+    env_file:
+      - .env
     networks:
       - traefik-net
     labels:
