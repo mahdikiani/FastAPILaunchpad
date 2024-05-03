@@ -12,5 +12,5 @@ FROM fast-base as fast-server
 USER user
 COPY . .
 
-CMD ["python", "-m" ,"debugpy", "--listen", "0.0.0.0:3000", "-m", "main.py"]
-# CMD [ "python","main.py" ]
+CMD ["python", "-m" ,"debugpy", "--listen", "0.0.0.0:3000", "-m", "app.py"]
+# CMD [ "python","app.py" ]
