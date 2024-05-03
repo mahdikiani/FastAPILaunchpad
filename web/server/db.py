@@ -1,4 +1,4 @@
-from .config import CONFIG
+from .config import Settings
 
 
 async def init_db():
