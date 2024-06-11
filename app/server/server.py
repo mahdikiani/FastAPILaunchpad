@@ -1,14 +1,13 @@
+import json
 import logging
 from contextlib import asynccontextmanager
 
 import fastapi
 import pydantic
-import json
-from json_advanced import dumps
+from core import exceptions
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-
-from core import exceptions
+from json_advanced import dumps
 
 from . import config, db
 
