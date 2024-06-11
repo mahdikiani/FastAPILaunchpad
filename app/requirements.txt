@@ -3,5 +3,7 @@ fastapi
 pydantic
 
 singleton_package
+json-advanced
 python-dotenv
 #debugpy
+#ipython

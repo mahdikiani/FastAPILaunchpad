@@ -2,6 +2,9 @@ import logging
 from contextlib import asynccontextmanager
 
 import fastapi
+import pydantic
+import json
+from json_advanced import dumps
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -45,6 +48,37 @@ async def base_http_exception_handler(
     return JSONResponse(
         status_code=exc.status_code,
         content={"message": exc.message, "error": exc.error},
+    )
+
+
+@app.exception_handler(pydantic.ValidationError)
+@app.exception_handler(fastapi.exceptions.ResponseValidationError)
+async def usso_exception_handler(
+    request: fastapi.Request, exc: pydantic.ValidationError
+):
+    return JSONResponse(
+        status_code=500,
+        content={
+            "message": str(exc),
+            "error": "Exception",
+            "erros": json.loads(dumps(exc.errors())),
+        },
+    )
+
+
+@app.exception_handler(Exception)
+async def usso_exception_handler(request: fastapi.Request, exc: Exception):
+    import traceback
+
+    traceback_str = "".join(traceback.format_tb(exc.__traceback__))
+    # body = request._body
+
+    logging.error(f"Exception: {traceback_str} {exc}")
+    logging.error(f"Exception on request: {request.url}")
+    # logging.error(f"Exception on request: {await request.body()}")
+    return JSONResponse(
+        status_code=500,
+        content={"message": str(exc), "error": "Exception"},
     )
 
 
