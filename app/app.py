@@ -2,6 +2,8 @@ from pathlib import Path
 
 from server.server import app
 
+__all__ = ["app"]
+
 if __name__ == "__main__":
     import uvicorn
 
