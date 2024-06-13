@@ -19,6 +19,13 @@ class Settings(metaclass=Singleton):
 
     root_url: str = os.getenv("DOMAIN", default="http://localhost:8000")
 
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL", default="sqlite:///./test.db"
+    )
+    DATABASE_URL_SYNC: str = os.getenv(
+        "DATABASE_URL_SYNC", default="sqlite:///./test.db"
+    )
+
     testing: bool = os.getenv("TESTING", default=False)
 
     log_config = {

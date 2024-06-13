@@ -5,5 +5,13 @@ pydantic
 singleton_package
 json-advanced
 python-dotenv
-#debugpy
-#ipython
+debugpy
+ipython
+
+sqlalchemy
+alembic
+asyncpg
+psycopg2-binary
+databases
+
+aiosqlite

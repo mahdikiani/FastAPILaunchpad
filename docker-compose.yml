@@ -1,10 +1,27 @@
-services:  
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./db.data:/var/lib/postgresql/data
+    networks:
+      - data
+
   app:
     build: app
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+    volumes:
+      - ./app:/app
     networks:
+      - data
       - traefik-net
     labels:
       - "traefik.enable=true"
@@ -21,3 +38,4 @@ services:
 networks:
   traefik-net:
     external: true
+  data:
