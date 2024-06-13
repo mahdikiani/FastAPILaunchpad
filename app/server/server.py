@@ -92,9 +92,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from apps.note.routes import router as note_router
+# from apps.note.routes import router as note_router
 
-app.include_router(note_router, prefix="/note", tags=["note"])
+# app.include_router(note_router, prefix="/note", tags=["note"])
 
 
 @app.get("/")
