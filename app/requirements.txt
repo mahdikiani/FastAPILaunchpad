@@ -5,5 +5,8 @@ pydantic
 singleton_package
 json-advanced
 python-dotenv
-#debugpy
-#ipython
+debugpy
+ipython
+
+beanie
+redis

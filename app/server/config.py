@@ -18,6 +18,8 @@ class Settings(metaclass=Singleton):
     """Server config settings."""
 
     root_url: str = os.getenv("DOMAIN", default="http://localhost:8000")
+    mongo_uri: str = os.getenv("MONGO_URI", default="mongodb://localhost:27017")
+    redis_uri: str = os.getenv("REDIS_URI", default="redis://localhost:6379")
 
     testing: bool = os.getenv("TESTING", default=False)
 
