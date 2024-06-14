@@ -47,6 +47,7 @@ class AbstractBaseRouter(Generic[T]):
             self.create_item,
             methods=["POST"],
             response_model=self.model,
+            status_code=201,
         )
         self.router.add_api_route(
             "/{uid:uuid}",
