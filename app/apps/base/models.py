@@ -237,6 +237,7 @@ class TaskMixin:
                         url=webhook,
                         headers={"Content-Type": "application/json"},
                         data=dumps(task_dict),
+                        raise_exception=False,
                     )
                 ]
         else:
