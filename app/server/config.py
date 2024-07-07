@@ -17,6 +17,7 @@ base_dir = Path(__file__).resolve().parent.parent
 class Settings(metaclass=Singleton):
     """Server config settings."""
 
+    base_dir: Path = base_dir
     root_url: str = os.getenv("DOMAIN", default="http://localhost:8000")
     mongo_uri: str = os.getenv("MONGO_URI", default="mongodb://localhost:27017")
     redis_uri: str = os.getenv("REDIS_URI", default="redis://localhost:6379")
@@ -35,7 +36,7 @@ class Settings(metaclass=Singleton):
             "file": {
                 "class": "logging.FileHandler",
                 "level": "INFO",
-                "filename": base_dir / "logs" / "info.log",
+                "filename": base_dir / "logs" / f"{project_name}.log",
                 "formatter": "standard",
             },
         },

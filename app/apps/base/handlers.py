@@ -10,7 +10,7 @@ OT = TypeVar("OT", bound=OwnedEntity)
 
 
 def create_dto(cls: OT):
-    async def dto(request: Request, user = None, **kwargs):
+    async def dto(request: Request, user=None, **kwargs):
         form_data = await request.json()
         if user:
             form_data["user_id"] = user.uid
@@ -20,7 +20,7 @@ def create_dto(cls: OT):
 
 
 def update_dto(cls: OT):
-    async def dto(request: Request, user = None, **kwargs):
+    async def dto(request: Request, user=None, **kwargs):
         uid = request.path_params["uid"]
         form_data = await request.json()
         kwargs = {}
