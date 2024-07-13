@@ -30,7 +30,7 @@ class Settings(metaclass=Singleton):
         "handlers": {
             "console": {
                 "class": "logging.StreamHandler",
-                "level": "INFO",
+                "level": "WARNING",
                 "formatter": "standard",
             },
             "file": {
