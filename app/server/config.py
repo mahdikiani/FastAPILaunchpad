@@ -22,6 +22,8 @@ class Settings(metaclass=Singleton):
     mongo_uri: str = os.getenv("MONGO_URI", default="mongodb://localhost:27017")
     redis_uri: str = os.getenv("REDIS_URI", default="redis://localhost:6379")
     project_name: str = os.getenv("PROJECT_NAME", default="FastAPILaunchpad")
+    
+    page_max_limit:int = 10
 
     testing: bool = os.getenv("TESTING", default=False)
 

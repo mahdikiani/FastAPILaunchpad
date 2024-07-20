@@ -74,7 +74,7 @@ class AbstractBaseRouter(Generic[T]):
         limit: int = 10,
     ):
         user = await self.get_user(request)
-        limit = max(limit, Settings.page_max_limit)
+        limit = max(1, min(limit, Settings.page_max_limit))
 
         items_query = (
             self.model.get_query(user=user)
