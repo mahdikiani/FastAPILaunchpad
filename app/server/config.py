@@ -10,7 +10,6 @@ import dotenv
 from singleton import Singleton
 
 dotenv.load_dotenv()
-base_dir = Path(__file__).resolve().parent.parent
 
 
 @dataclasses.dataclass
@@ -18,6 +17,7 @@ class Settings(metaclass=Singleton):
     """Server config settings."""
 
     root_url: str = os.getenv("DOMAIN", default="http://localhost:8000")
+    base_dir: Path = Path(__file__).resolve().parent.parent
 
     testing: bool = os.getenv("TESTING", default=False)
 
@@ -55,8 +55,8 @@ class Settings(metaclass=Singleton):
         },
     }
 
-    def config_logger(self):
-        if not (base_dir / "logs").exists():
-            (base_dir / "logs").mkdir()
+    def config_logger(cls):
+        if not (cls.base_dir / "logs").exists():
+            (cls.base_dir / "logs").mkdir()
 
-        logging.config.dictConfig(self.log_config)
+        logging.config.dictConfig(cls.log_config)
