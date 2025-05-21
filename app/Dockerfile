@@ -12,5 +12,6 @@ FROM fast-base as fast-server
 USER user
 COPY --chown=user:user . .
 
-CMD ["python", "-m" ,"debugpy", "--listen", "0.0.0.0:3000", "-m", "app"]
-# CMD [ "python","app.py" ]
+# CMD ["python", "-m" ,"debugpy", "--listen", "0.0.0.0:3000", "-m", "app"]
+# For debugging, comment out the CMD below and uncomment the CMD above.
+CMD [ "python","app.py" ]
