@@ -4,20 +4,5 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    networks:
-      - traefik-net
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.${PROJECT_NAME}.entrypoints=web"
-      - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`${DOMAIN}`)"
-      # - "traefik.http.routers.${PROJECT_NAME}.middlewares=https-redirect"
-      - "traefik.http.routers.${PROJECT_NAME}-secure.entrypoints=websecure"
-      - "traefik.http.routers.${PROJECT_NAME}-secure.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.${PROJECT_NAME}-secure.tls=true"
-      - "traefik.http.routers.${PROJECT_NAME}-secure.tls.certresolver=letsencrypt"
-      - "traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=8000"
-      - "traefik.docker.network=traefik-net"
-
-networks:
-  traefik-net:
-    external: true
+    ports:
+      - "8000:8000"
